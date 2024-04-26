@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func (gotify Gotify) SendMessage(msg Message) (msgInfo MessageExternal, err error) {
+func (gotify *Gotify) SendMessage(msg Message) (msgInfo MessageExternal, err error) {
 	msgByte, err := json.Marshal(msg)
 	if err != nil {
 		return

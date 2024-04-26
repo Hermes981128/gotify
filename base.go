@@ -15,14 +15,14 @@ type Gotify struct {
 	ApiKey   string `json:"apiKey" yaml:"apiKey" comment:"授权token"`
 }
 
-func NewGotify(apiKey, endPoint string) Gotify {
+func NewGotify(apiKey, endPoint string) *Gotify {
 	if strings.HasSuffix(endPoint, "/") {
 		endPoint = endPoint[:len(endPoint)-1]
 	}
-	return Gotify{EndPoint: endPoint, ApiKey: apiKey}
+	return &Gotify{EndPoint: endPoint, ApiKey: apiKey}
 }
 
-func (gotify Gotify) do(req *http.Request) (resBody []byte, err error) {
+func (gotify *Gotify) do(req *http.Request) (resBody []byte, err error) {
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-Gotify-Key", gotify.ApiKey)
 	res, err := client.Do(req)
