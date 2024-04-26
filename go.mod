@@ -1,4 +1,4 @@
-module gotify
+module github.com/lazydog28/gotify
 
 go 1.21
 
